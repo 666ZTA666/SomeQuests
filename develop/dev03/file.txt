@@ -1,0 +1,13 @@
+a a
+d e
+e b c
+b s d
+g h
+c t t
+f r e
+z z z
+z z z
+z z z
+1 2 3
+2 3 4
+2 2 1

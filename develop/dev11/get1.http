@@ -1,0 +1,9 @@
+
+GET http://localhost:80/events_for_day?date=2019-10-09
+###
+
+GET http://localhost:80/events_for_week?date=2019-10-09
+###
+
+GET http://localhost:80/events_for_month?date=2019-10-09
+###

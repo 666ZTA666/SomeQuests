@@ -1,0 +1,104 @@
+#невалидный userId
+POST http://localhost:80/create_event
+Content-Type: application/x-www-form-urlencoded
+
+user_id=-1&date=2019-09-09
+
+###
+#невалидная дата
+POST http://localhost:80/create_event
+Content-Type: application/x-www-form-urlencoded
+
+user_id=-1&date=2019-13-09
+
+###
+#нормальный запрос
+POST http://localhost:80/create_event
+Content-Type: application/x-www-form-urlencoded
+
+user_id=3&date=2019-09-09
+
+###
+
+GET http://localhost:80/events_for_day?user_id=3&date=2019-09-09
+###
+
+GET http://localhost:80/events_for_week?user_id=3&date=2019-09-09
+###
+
+GET http://localhost:80/events_for_month?user_id=3&date=2019-09-09
+###
+#невалидный userId будет проигнорирован
+POST http://localhost:80/update_event
+Content-Type: application/x-www-form-urlencoded
+
+uid=1&user_id=f&date=2019-10-09
+
+
+###
+#невалидная дата будет проигнорирована
+POST http://localhost:80/update_event
+Content-Type: application/x-www-form-urlencoded
+
+uid=1&user_id=2&date=2019-13-09
+
+
+###
+#невалидный uid нельзя проигнорировать
+POST http://localhost:80/update_event
+Content-Type: application/x-www-form-urlencoded
+
+uid=3&user_id=2&date=2019-10-09
+
+
+###
+#нормальный запрос
+POST http://localhost:80/update_event
+Content-Type: application/x-www-form-urlencoded
+
+uid=1&user_id=2&date=2019-10-09
+
+
+###
+
+GET http://localhost:80/events_for_day?user_id=2&date=2019-10-09
+###
+
+GET http://localhost:80/events_for_week?user_id=2&date=2019-10-09
+###
+
+GET http://localhost:80/events_for_month?user_id=2&date=2019-10-09
+###
+#невалидный userID проигнорирован
+POST http://localhost:80/delete_event
+Content-Type: application/x-www-form-urlencoded
+
+uid=1&user_id=f&date=2019-10-09
+###
+#невалидная дата
+POST http://localhost:80/delete_event
+Content-Type: application/x-www-form-urlencoded
+
+uid=2&user_id=2&date=2019-13-09
+###
+#невалидный uid
+POST http://localhost:80/delete_event
+Content-Type: application/x-www-form-urlencoded
+
+uid=f&user_id=2&date=2019-10-09
+###
+#нормальный запрос
+POST http://localhost:80/delete_event
+Content-Type: application/x-www-form-urlencoded
+
+uid=3&user_id=2&date=2019-10-09
+###
+
+GET http://localhost:80/events_for_day?date=2019-10-09
+###
+
+GET http://localhost:80/events_for_week?date=2019-10-09
+###
+
+GET http://localhost:80/events_for_month?date=2019-10-09
+###
